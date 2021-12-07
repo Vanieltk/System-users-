@@ -9,7 +9,9 @@ export class UserDTO extends BaseDTO{
 
   @FilterableField()
   name: string;
-  cpf: number;
+
+  @FilterableField()
+  cpf: number
 
   @FilterableField()
   key: string;

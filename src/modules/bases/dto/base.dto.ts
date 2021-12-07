@@ -1,5 +1,5 @@
 import { FilterableField } from '@nestjs-query/query-graphql';
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ObjectType, } from '@nestjs/graphql';
 
 @ObjectType()
 export class BaseDTO

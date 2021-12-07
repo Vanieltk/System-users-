@@ -10,11 +10,12 @@ import { TasksModule } from './modules/tasks/tasks.module';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot(),
     GraphQLModule.forRoot({
+      debug: false,
       autoSchemaFile :join(process.cwd(), 'src/schema.gql'),
       sortSchema: true
     }),
-  TypeOrmModule.forRoot(),
   UsersModule,
   TasksModule,
   ],
