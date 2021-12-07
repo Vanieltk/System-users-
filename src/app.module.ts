@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path/posix';
+import { join } from 'path';
 import { AppService } from './app.service';
 import { UsersModule } from './modules/users/users.module';
+
 
 @Module({
   imports: [
