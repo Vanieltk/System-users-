@@ -13,4 +13,5 @@ export class User extends BaseEntity{
 
   @Column()
   key: string;
+  tasks: any;
 }
