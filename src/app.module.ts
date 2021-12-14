@@ -5,6 +5,7 @@ import { join } from 'path';
 import { AppService } from './app.service';
 import { UsersModule } from './modules/users/users.module';
 import { TasksModule } from './modules/tasks/tasks.module';
+import { ServiceModule } from './modules/services/service.module';
 
 
 
@@ -18,6 +19,7 @@ import { TasksModule } from './modules/tasks/tasks.module';
     }),
   UsersModule,
   TasksModule,
+  ServiceModule,
   ],
   providers: [AppService],
 })
