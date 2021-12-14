@@ -1,0 +1,845 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input AddTasksToServiceInput {
+  """The id of the record."""
+  id: ID!
+
+  """The ids of the relations."""
+  relationIds: [ID!]!
+}
+
+input CreateManyServicesInput {
+  """Array of records to create"""
+  services: [CreateServiceInput!]!
+}
+
+input CreateManyTasksInput {
+  """Array of records to create"""
+  tasks: [CreateTaskInput!]!
+}
+
+input CreateManyUsersInput {
+  """Array of records to create"""
+  users: [CreateUserInput!]!
+}
+
+input CreateOneServiceInput {
+  """The record to create"""
+  service: CreateServiceInput!
+}
+
+input CreateOneTaskInput {
+  """The record to create"""
+  task: CreateTaskInput!
+}
+
+input CreateOneUserInput {
+  """The record to create"""
+  user: CreateUserInput!
+}
+
+input CreateServiceInput {
+  expectedDeliveryDate: DateTime!
+  name: String!
+  tasks: [UpdateTaskInput!]!
+}
+
+input CreateTaskInput {
+  collaboratorId: String!
+  deliveryDate: DateTime!
+  expectedDeliveryDate: DateTime!
+  name: String!
+  taskStatus: taskStatus
+}
+
+input CreateUserInput {
+  cpf: String!
+  key: String!
+  name: String!
+}
+
+input DateFieldComparison {
+  between: DateFieldComparisonBetween
+  eq: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  is: Boolean
+  isNot: Boolean
+  lt: DateTime
+  lte: DateTime
+  neq: DateTime
+  notBetween: DateFieldComparisonBetween
+  notIn: [DateTime!]
+}
+
+input DateFieldComparisonBetween {
+  lower: DateTime!
+  upper: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type DeleteManyResponse {
+  """The number of records deleted."""
+  deletedCount: Int!
+}
+
+input DeleteManyServicesInput {
+  """Filter to find records to delete"""
+  filter: ServiceDeleteFilter!
+}
+
+input DeleteManyTasksInput {
+  """Filter to find records to delete"""
+  filter: TaskDeleteFilter!
+}
+
+input DeleteManyUsersInput {
+  """Filter to find records to delete"""
+  filter: UserDeleteFilter!
+}
+
+input DeleteOneServiceInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneTaskInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteOneUserInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+type Mutation {
+  addTasksToService(input: AddTasksToServiceInput!): Service!
+  createManyServices(input: CreateManyServicesInput!): [Service!]!
+  createManyTasks(input: CreateManyTasksInput!): [Task!]!
+  createManyUsers(input: CreateManyUsersInput!): [User!]!
+  createOneService(input: CreateOneServiceInput!): Service!
+  createOneTask(input: CreateOneTaskInput!): Task!
+  createOneUser(input: CreateOneUserInput!): User!
+  deleteManyServices(input: DeleteManyServicesInput!): DeleteManyResponse!
+  deleteManyTasks(input: DeleteManyTasksInput!): DeleteManyResponse!
+  deleteManyUsers(input: DeleteManyUsersInput!): DeleteManyResponse!
+  deleteOneService(input: DeleteOneServiceInput!): ServiceDeleteResponse!
+  deleteOneTask(input: DeleteOneTaskInput!): TaskDeleteResponse!
+  deleteOneUser(input: DeleteOneUserInput!): UserDeleteResponse!
+  removeServicesFromTask(input: RemoveServicesFromTaskInput!): Task!
+  removeTasksFromService(input: RemoveTasksFromServiceInput!): Service!
+  removeUsersFromTask(input: RemoveUsersFromTaskInput!): Task!
+  setServicesOnTask(input: SetServicesOnTaskInput!): Task!
+  setTasksOnService(input: SetTasksOnServiceInput!): Service!
+  setUsersOnTask(input: SetUsersOnTaskInput!): Task!
+  updateManyServices(input: UpdateManyServicesInput!): UpdateManyResponse!
+  updateManyTasks(input: UpdateManyTasksInput!): UpdateManyResponse!
+  updateManyUsers(input: UpdateManyUsersInput!): UpdateManyResponse!
+  updateOneService(input: UpdateOneServiceInput!): Service!
+  updateOneTask(input: UpdateOneTaskInput!): Task!
+  updateOneUser(input: UpdateOneUserInput!): User!
+}
+
+input NumberFieldComparison {
+  between: NumberFieldComparisonBetween
+  eq: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  is: Boolean
+  isNot: Boolean
+  lt: Float
+  lte: Float
+  neq: Float
+  notBetween: NumberFieldComparisonBetween
+  notIn: [Float!]
+}
+
+input NumberFieldComparisonBetween {
+  lower: Float!
+  upper: Float!
+}
+
+type OffsetPageInfo {
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+}
+
+input OffsetPaging {
+  """Limit the number of records returned"""
+  limit: Int
+
+  """Offset to start returning records from"""
+  offset: Int
+}
+
+type Query {
+  service(
+    """The id of the record to find."""
+    id: ID!
+  ): Service
+  services(
+    """Specify to filter the records returned."""
+    filter: ServiceFilter = {}
+
+    """Limit or page results."""
+    paging: OffsetPaging = {limit: 10}
+
+    """Specify to sort results."""
+    sorting: [ServiceSort!] = []
+  ): ServiceConnection!
+  task(
+    """The id of the record to find."""
+    id: ID!
+  ): Task
+  tasks(
+    """Specify to filter the records returned."""
+    filter: TaskFilter = {}
+
+    """Limit or page results."""
+    paging: OffsetPaging = {limit: 10}
+
+    """Specify to sort results."""
+    sorting: [TaskSort!] = []
+  ): TaskConnection!
+  user(
+    """The id of the record to find."""
+    id: ID!
+  ): User
+  users(
+    """Specify to filter the records returned."""
+    filter: UserFilter = {}
+
+    """Limit or page results."""
+    paging: OffsetPaging = {limit: 10}
+
+    """Specify to sort results."""
+    sorting: [UserSort!] = []
+  ): UserConnection!
+}
+
+input RemoveServicesFromTaskInput {
+  """The id of the record."""
+  id: ID!
+
+  """The id of relation."""
+  relationId: ID!
+}
+
+input RemoveTasksFromServiceInput {
+  """The id of the record."""
+  id: ID!
+
+  """The ids of the relations."""
+  relationIds: [ID!]!
+}
+
+input RemoveUsersFromTaskInput {
+  """The id of the record."""
+  id: ID!
+
+  """The id of relation."""
+  relationId: ID!
+}
+
+type Service {
+  createdAt: DateTime!
+  deletedAt: DateTime!
+  expectedDeliveryDate: DateTime!
+  id: String!
+  name: String!
+  tasks(
+    """Specify to filter the records returned."""
+    filter: TaskFilter = {}
+
+    """Limit or page results."""
+    paging: OffsetPaging = {limit: 10}
+
+    """Specify to sort results."""
+    sorting: [TaskSort!] = []
+  ): ServiceTasksConnection
+  updateAt: DateTime!
+}
+
+type ServiceAggregateGroupBy {
+  createdAt: DateTime
+  deletedAt: DateTime
+  expectedDeliveryDate: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+type ServiceConnection {
+  """Array of nodes."""
+  nodes: [Service!]!
+
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type ServiceCountAggregate {
+  createdAt: Int
+  deletedAt: Int
+  expectedDeliveryDate: Int
+  id: Int
+  name: Int
+  updateAt: Int
+}
+
+input ServiceDeleteFilter {
+  and: [ServiceDeleteFilter!]
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  expectedDeliveryDate: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [ServiceDeleteFilter!]
+  updateAt: DateFieldComparison
+}
+
+type ServiceDeleteResponse {
+  createdAt: DateTime
+  deletedAt: DateTime
+  expectedDeliveryDate: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+input ServiceFilter {
+  and: [ServiceFilter!]
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  expectedDeliveryDate: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [ServiceFilter!]
+  tasks: ServiceFilterTaskFilter
+  updateAt: DateFieldComparison
+}
+
+input ServiceFilterTaskFilter {
+  and: [ServiceFilterTaskFilter!]
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  deliveryDate: DateFieldComparison
+  expectedDeliveryDate: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [ServiceFilterTaskFilter!]
+  taskStatus: TaskStatusFilterComparison
+  updateAt: DateFieldComparison
+}
+
+type ServiceMaxAggregate {
+  createdAt: DateTime
+  deletedAt: DateTime
+  expectedDeliveryDate: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+type ServiceMinAggregate {
+  createdAt: DateTime
+  deletedAt: DateTime
+  expectedDeliveryDate: DateTime
+  id: String
+  name: String
+  updateAt: DateTime
+}
+
+input ServiceSort {
+  direction: SortDirection!
+  field: ServiceSortFields!
+  nulls: SortNulls
+}
+
+enum ServiceSortFields {
+  createdAt
+  deletedAt
+  expectedDeliveryDate
+  id
+  name
+  updateAt
+}
+
+type ServiceTasksConnection {
+  """Array of nodes."""
+  nodes: [Task!]!
+
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+input ServiceUpdateFilter {
+  and: [ServiceUpdateFilter!]
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  expectedDeliveryDate: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [ServiceUpdateFilter!]
+  updateAt: DateFieldComparison
+}
+
+input SetServicesOnTaskInput {
+  """The id of the record."""
+  id: ID!
+
+  """The id of relation."""
+  relationId: ID!
+}
+
+input SetTasksOnServiceInput {
+  """The id of the record."""
+  id: ID!
+
+  """The ids of the relations."""
+  relationIds: [ID!]!
+}
+
+input SetUsersOnTaskInput {
+  """The id of the record."""
+  id: ID!
+
+  """The id of relation."""
+  relationId: ID!
+}
+
+"""Sort Directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""Sort Nulls Options"""
+enum SortNulls {
+  NULLS_FIRST
+  NULLS_LAST
+}
+
+input StringFieldComparison {
+  eq: String
+  gt: String
+  gte: String
+  iLike: String
+  in: [String!]
+  is: Boolean
+  isNot: Boolean
+  like: String
+  lt: String
+  lte: String
+  neq: String
+  notILike: String
+  notIn: [String!]
+  notLike: String
+}
+
+type Task {
+  createdAt: DateTime!
+  deletedAt: DateTime!
+  deliveryDate: DateTime!
+  expectedDeliveryDate: DateTime!
+  id: String!
+  name: String!
+  services: Service
+  taskStatus: taskStatus
+  updateAt: DateTime!
+  users: User
+}
+
+type TaskAggregateGroupBy {
+  createdAt: DateTime
+  deletedAt: DateTime
+  deliveryDate: DateTime
+  expectedDeliveryDate: DateTime
+  id: String
+  name: String
+  taskStatus: taskStatus
+  updateAt: DateTime
+}
+
+type TaskConnection {
+  """Array of nodes."""
+  nodes: [Task!]!
+
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type TaskCountAggregate {
+  createdAt: Int
+  deletedAt: Int
+  deliveryDate: Int
+  expectedDeliveryDate: Int
+  id: Int
+  name: Int
+  taskStatus: Int
+  updateAt: Int
+}
+
+input TaskDeleteFilter {
+  and: [TaskDeleteFilter!]
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  deliveryDate: DateFieldComparison
+  expectedDeliveryDate: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [TaskDeleteFilter!]
+  taskStatus: TaskStatusFilterComparison
+  updateAt: DateFieldComparison
+}
+
+type TaskDeleteResponse {
+  createdAt: DateTime
+  deletedAt: DateTime
+  deliveryDate: DateTime
+  expectedDeliveryDate: DateTime
+  id: String
+  name: String
+  taskStatus: taskStatus
+  updateAt: DateTime
+}
+
+input TaskFilter {
+  and: [TaskFilter!]
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  deliveryDate: DateFieldComparison
+  expectedDeliveryDate: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [TaskFilter!]
+  services: TaskFilterServiceFilter
+  taskStatus: TaskStatusFilterComparison
+  updateAt: DateFieldComparison
+  users: TaskFilterUserFilter
+}
+
+input TaskFilterServiceFilter {
+  and: [TaskFilterServiceFilter!]
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  expectedDeliveryDate: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [TaskFilterServiceFilter!]
+  updateAt: DateFieldComparison
+}
+
+input TaskFilterUserFilter {
+  and: [TaskFilterUserFilter!]
+  cpf: NumberFieldComparison
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  id: StringFieldComparison
+  key: StringFieldComparison
+  name: StringFieldComparison
+  or: [TaskFilterUserFilter!]
+  updateAt: DateFieldComparison
+}
+
+type TaskMaxAggregate {
+  createdAt: DateTime
+  deletedAt: DateTime
+  deliveryDate: DateTime
+  expectedDeliveryDate: DateTime
+  id: String
+  name: String
+  taskStatus: taskStatus
+  updateAt: DateTime
+}
+
+type TaskMinAggregate {
+  createdAt: DateTime
+  deletedAt: DateTime
+  deliveryDate: DateTime
+  expectedDeliveryDate: DateTime
+  id: String
+  name: String
+  taskStatus: taskStatus
+  updateAt: DateTime
+}
+
+input TaskSort {
+  direction: SortDirection!
+  field: TaskSortFields!
+  nulls: SortNulls
+}
+
+enum TaskSortFields {
+  createdAt
+  deletedAt
+  deliveryDate
+  expectedDeliveryDate
+  id
+  name
+  taskStatus
+  updateAt
+}
+
+input TaskStatusFilterComparison {
+  eq: taskStatus
+  gt: taskStatus
+  gte: taskStatus
+  iLike: taskStatus
+  in: [taskStatus!]
+  is: Boolean
+  isNot: Boolean
+  like: taskStatus
+  lt: taskStatus
+  lte: taskStatus
+  neq: taskStatus
+  notILike: taskStatus
+  notIn: [taskStatus!]
+  notLike: taskStatus
+}
+
+input TaskUpdateFilter {
+  and: [TaskUpdateFilter!]
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  deliveryDate: DateFieldComparison
+  expectedDeliveryDate: DateFieldComparison
+  id: StringFieldComparison
+  name: StringFieldComparison
+  or: [TaskUpdateFilter!]
+  taskStatus: TaskStatusFilterComparison
+  updateAt: DateFieldComparison
+}
+
+type UpdateManyResponse {
+  """The number of records updated."""
+  updatedCount: Int!
+}
+
+input UpdateManyServicesInput {
+  """Filter used to find fields to update"""
+  filter: ServiceUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateServiceInput!
+}
+
+input UpdateManyTasksInput {
+  """Filter used to find fields to update"""
+  filter: TaskUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateTaskInput!
+}
+
+input UpdateManyUsersInput {
+  """Filter used to find fields to update"""
+  filter: UserUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateUserInput!
+}
+
+input UpdateOneServiceInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateServiceInput!
+}
+
+input UpdateOneTaskInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateTaskInput!
+}
+
+input UpdateOneUserInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateUserInput!
+}
+
+input UpdateServiceInput {
+  expectedDeliveryDate: DateTime
+  id: ID
+  name: String
+  tasks: [UpdateTaskInput!]
+}
+
+input UpdateTaskInput {
+  collaboratorId: String
+  deliveryDate: DateTime
+  expectedDeliveryDate: DateTime
+  id: ID
+  name: String
+  taskStatus: taskStatus
+}
+
+input UpdateUserInput {
+  cpf: String
+  id: ID
+  key: String
+  name: String
+}
+
+type User {
+  cpf: Float!
+  createdAt: DateTime!
+  deletedAt: DateTime!
+  id: String!
+  key: String!
+  name: String!
+  updateAt: DateTime!
+}
+
+type UserAggregateGroupBy {
+  cpf: Float
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: String
+  key: String
+  name: String
+  updateAt: DateTime
+}
+
+type UserAvgAggregate {
+  cpf: Float
+}
+
+type UserConnection {
+  """Array of nodes."""
+  nodes: [User!]!
+
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type UserCountAggregate {
+  cpf: Int
+  createdAt: Int
+  deletedAt: Int
+  id: Int
+  key: Int
+  name: Int
+  updateAt: Int
+}
+
+input UserDeleteFilter {
+  and: [UserDeleteFilter!]
+  cpf: NumberFieldComparison
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  id: StringFieldComparison
+  key: StringFieldComparison
+  name: StringFieldComparison
+  or: [UserDeleteFilter!]
+  updateAt: DateFieldComparison
+}
+
+type UserDeleteResponse {
+  cpf: Float
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: String
+  key: String
+  name: String
+  updateAt: DateTime
+}
+
+input UserFilter {
+  and: [UserFilter!]
+  cpf: NumberFieldComparison
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  id: StringFieldComparison
+  key: StringFieldComparison
+  name: StringFieldComparison
+  or: [UserFilter!]
+  updateAt: DateFieldComparison
+}
+
+type UserMaxAggregate {
+  cpf: Float
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: String
+  key: String
+  name: String
+  updateAt: DateTime
+}
+
+type UserMinAggregate {
+  cpf: Float
+  createdAt: DateTime
+  deletedAt: DateTime
+  id: String
+  key: String
+  name: String
+  updateAt: DateTime
+}
+
+input UserSort {
+  direction: SortDirection!
+  field: UserSortFields!
+  nulls: SortNulls
+}
+
+enum UserSortFields {
+  cpf
+  createdAt
+  deletedAt
+  id
+  key
+  name
+  updateAt
+}
+
+type UserSumAggregate {
+  cpf: Float
+}
+
+input UserUpdateFilter {
+  and: [UserUpdateFilter!]
+  cpf: NumberFieldComparison
+  createdAt: DateFieldComparison
+  deletedAt: DateFieldComparison
+  id: StringFieldComparison
+  key: StringFieldComparison
+  name: StringFieldComparison
+  or: [UserUpdateFilter!]
+  updateAt: DateFieldComparison
+}
+
+enum taskStatus {
+  FINISHED
+  IN_PROGRESS
+  OPEN
+}
